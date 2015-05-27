@@ -10,7 +10,12 @@
         <ul class="nav navbar-nav">
           <li class="title">Menu</li>
           {{> loginButtons}}
-          <li class="active"><a href="{{pathFor 'blogs'}}">Home</a></li>
+          
+          <li class="active">
+            <a href="{{pathFor 'blogs'}}">Home</a></li>
+          {{#if currentUser}}
+          <li><a href="{{pathFor 'blogPost'}}">New blog</a></li>
+          {{/if}}
           <li><a href="about.html">About</a></li>
           <li><a href="hire.html">Hire Me</a></li>
           <li><a href="contact.html">Contact</a></li>
