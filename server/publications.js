@@ -4,5 +4,9 @@ Meteor.publish('blogs', function() {
 
 Meteor.publish('comments', function(blogId) {
   check(blogId, String);
-  return Comments.find({postId: blogId});
+  return Comments.find({blogId: blogId});
+});
+
+Meteor.publish('notifications', function() {
+  return Notifications.find({userId: this.userId, read: false});
 });

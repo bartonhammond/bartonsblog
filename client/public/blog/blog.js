@@ -1,5 +1,6 @@
 Template.blog.helpers({
   comments: function() {
-    return Comments.find({postId: this._id});
+    var cursor =  Comments.find({blogId: this._id});
+    return cursor;
   }
 });
