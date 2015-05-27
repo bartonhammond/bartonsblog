@@ -14,7 +14,7 @@ Template.blogPost.events(
 
       Meteor.call('blogInsert', blog, function(error, result) {
         if (error)
-          return alert(error.reason);
+          throwError(error.reason);
         if (result.publish) {
           Router.go('blog', {_id: result._id});
         } else {
