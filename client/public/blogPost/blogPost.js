@@ -33,9 +33,9 @@ Template.blogPost.events(
         if (error)
           throwError(error.reason);
         if (result.publish) {
-          Router.go('blog', {_id: result._id});
+          Router.go('/');
         } else {
-          Router.go('blogs');
+          Router.go('blog', {_id: result._id});
         }
         
       });
