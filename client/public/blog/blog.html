@@ -58,18 +58,21 @@
           </div><!-- end row -->
         </div><!-- end post-content -->
       </article>
-      <ul class="pager">
-        <li class="prev">
-          <small><span class="fa fa-chevron-left"></span>Previous</small>
-          <h3><a href="#none">Big Buck Bunny</a></h3>
-          <p><span class="fa fa-calendar"></span>Thu Apr 27</p>
-        </li>
-        <li class="next">
-          <small>Next<span class="fa fa-chevron-right"></span></small>
-          <h3><a href="#none">Sintel</a></h3>
-          <p><span class="fa fa-calendar"></span>Tue Apr 25</p>
-        </li>
-      </ul>
+      <div id="comments">
+        <h3 class="comments-title">{{commentsCount}} Comments</h3>
+        <ol class="commentlist">
+          {{#each comments}}
+          {{> comment}}
+          {{/each}}
+        </ol>
+      </div>
+
+      {{#if currentUser}}
+         {{> commentSubmit}}
+      {{else}}
+          <p>Please log in to leave a comment.</p>
+      {{/if}}
+      
     </div><!-- end post -->
   </div><!-- end col -->
 </template>
