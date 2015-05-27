@@ -10,8 +10,8 @@
         <h3>Update blog</h3>
         <form class="form-horizontal">
 
-          <div class="form-group">
-            <label class="control-label" forxo="typeCard">Type Card</label>
+          <div class="form-group {{errorClass 'typeCard'}}">
+            <label class="control-label" for="typeCard">Type Card</label>
             <div class="controls">
               <div class="row">
                 <div class="col-md-6">
@@ -23,12 +23,14 @@
                 </div><!-- end col md -->
               </div><!-- end row -->
               <span class="help-block">Enter words that describe this
-              blog post that are like a category e.g. family joe </span>
+              blog post that are like a category e.g. family
+                joe </span>
+               <span class="help-inline">{{errorMessage 'typeCard'}}</span>
             </div><!-- end controls-->
           </div><!-- end form-group -->
 
 
-           <div class="form-group">
+           <div class="form-group {{errorClass 'title'}}">
             <label class="control-label" for="title">Title</label>
             <div class="controls">
               <div class="row">
@@ -40,11 +42,13 @@
                          placeholder="Title" />
                 </div><!-- end col md -->
               </div><!-- end row -->
-              <span class="help-block">Brief sentence of main idea.</span>
+              <span class="help-block">Brief sentence of main
+                idea.</span>
+               <span class="help-inline">{{errorMessage 'title'}}</span>
             </div><!-- end controls-->
           </div><!-- end form-group -->
           
-          <div class="form-group">
+          <div class="form-group {{errorClass 'description'}}">
             <label class="control-label" for="description">Description</label>
             <div class="controls">
               <textarea id="description"
@@ -52,9 +56,13 @@
                         rows="3"
                         class="form-control"
                         placeholder="Description"></textarea>
+
+              <span class="help-block">This is the blog post itself.
+                The first few words are included on the home
+                page. </span>
+              <span class="help-inline">{{errorMessage
+               'description'}}</span>
             </div><!-- end controls-->
-             <span class="help-block">This is the blog post itself.
-             The first few words are included on the home page. </span>
           </div><!-- end form-group -->
 
           <label class="checkbox" style="padding-top: 0">
