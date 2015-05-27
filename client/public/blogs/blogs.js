@@ -1,5 +1,8 @@
 Template.blogs.helpers({
   blogs: function(){
-    return Blogs.find();
+    return Blogs.find({},
+                      {
+                        sort: {submitted: -1}
+                      }); 
   }
-})
+});
