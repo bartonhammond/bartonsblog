@@ -1,3 +1,15 @@
+Template.blogPost.onCreated(function() {
+  Session.set('blogSubmitErrors', {});
+});
+
+Template.blogPost.helpers({
+  errorMessage: function(field) {
+    return Session.get('blogSubmitErrors')[field];
+  },
+  errorClass: function (field) {
+    return !!Session.get('blogSubmitErrors')[field] ? 'has-error' : '';
+  }
+});
 Template.blogPost.events(
   {
     'submit form': function(e, tmpl) {
@@ -12,6 +24,11 @@ Template.blogPost.events(
         publish: tmpl.find("#publish").checked
       };
 
+      
+      var errors = validateBlog(blog);
+      if (_.keys(errors).length > 0) 
+        return Session.set('blogSubmitErrors', errors);
+      
       Meteor.call('blogInsert', blog, function(error, result) {
         if (error)
           throwError(error.reason);

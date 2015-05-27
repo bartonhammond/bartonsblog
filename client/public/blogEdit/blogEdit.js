@@ -1,3 +1,16 @@
+Template.blogEdit.onCreated(function() {
+  Session.set('postSubmitErrors', {});
+});
+
+Template.blogEdit.helpers({
+  errorMessage: function(field) {
+    return Session.get('postSubmitErrors')[field];
+  },
+  errorClass: function (field) {
+    return !!Session.get('postSubmitErrors')[field] ? 'has-error' : '';
+  }
+});
+
 Template.blogEdit.events({
   'submit form': function(e, tmpl) {
     e.preventDefault();
@@ -12,6 +25,11 @@ Template.blogEdit.events({
       numberComments: 0,
       publish: tmpl.find("#publish").checked
     };
+
+    var errors = validateBlog(blog);
+    if (_.keys(errors).length > 0) 
+      return Session.set('postSubmitErrors', errors)
+    
     Blogs.update(blogId, {$set: blog}, function(error) {
       if (error) {
         // display the error to the user
