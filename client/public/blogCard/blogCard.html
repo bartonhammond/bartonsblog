@@ -1,14 +1,14 @@
 <template name="blogCard">
   <div class="card {{typeCard}}">
-    <a href="blog-post.html" class="thumb">
+    <a href="{{pathFor 'blog'}}" class="thumb">
       <img src="{{img}}" alt="" title="" />
       <span class="overlay"><span class="fa fa-search"></span></span>
     </a>
     <div class="card-body">
-      <h2><a href="blog-post.html">{{title}}</a></h2>
+      <h2><a href="{{pathFor 'blog'}}">{{title}}</a></h2>
       <p class="post-meta">{{written}}</p>
       <p>{{description}} ...</p>
-      <p><a href="blog-post.html">Read More</a></p>
+      <p><a href="{{pathFor 'blog'}}">Read More</a></p>
     </div><!-- end card-body -->
     <div class="card-footer">
       <ul class="list-inline filters">
