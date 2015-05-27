@@ -6,6 +6,12 @@
     </a>
     <div class="card-body">
       <h2><a href="{{pathFor 'blog'}}">{{title}}</a></h2>
+      <p>
+        submitted by {{author}}
+        {{#if ownPost}}
+        <a href="{{pathFor 'blogEdit'}}">Edit</a>
+        {{/if}}
+      </p>
       <p class="post-meta">{{written}}</p>
       <p>{{shortDescription}} ...</p>
       <p><a href="{{pathFor 'blog'}}">Read More</a></p>

@@ -12,5 +12,8 @@ Template.blogCard.helpers({
     } else {
       return this.description;
     }
+  },
+  ownPost: function() {
+    return this.userId === Meteor.userId();
   }
 });
