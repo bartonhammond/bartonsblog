@@ -4,13 +4,12 @@
   <meta name="description" content="Blog for Barton and Marilyn Hammond">
 </head>
 
-<body>
-
+<template name="index">
   <div class="wrapper">
     <div class="row">
 
       {{> sidebar}}
-      {{> blogs }}
+      {{> yield }}
       
     </div><!-- end row -->
   </div><!-- end wrapper -->
@@ -20,4 +19,4 @@
     <p class="pull-right"><a href="#none">LivinLovin</a></p>
   </footer>
 
-</body>
+</template>
