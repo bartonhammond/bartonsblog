@@ -1,0 +1,18 @@
+<template name="commentSubmit">
+  <form class="form-horizontal">
+
+    <div class="form-group {{errorClass 'comment'}}">
+      <label class="control-label" for="comment">Comment on this blog</label>
+      <div class="controls">
+        <textarea name="comment" rows="3" class="form-control" placeholder="Comment"></textarea>
+      </div><!-- end controls-->
+      <span class="help-inline">{{errorMessage 'comment'}}</span>
+    </div><!-- end form-group -->
+
+    
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Save comment</button>
+    </div><!-- end form actions -->
+
+  </form>
+</template>
