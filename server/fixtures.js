@@ -39,6 +39,20 @@ if (Blogs.find().count() === 0) {
     submitted: new Date(now - 3 * 3600 * 1000),
     body: 'You sure can Tom!'
   });
-    
+
+  for (var i = 0; i < 1000; i++) {
+    Blogs.insert({
+      typeCard: 'foo',
+      title: 'Introducing Telescope',
+      description: 'some description',
+      img: "img/sample/sintel/sample-sintel-1.jpg",
+      userId: sacha._id,
+      publish: true,
+      author: sacha.profile.name,
+      commentsCount: 0,
+      submitted: new Date(now - 7 * 3600 * 1000)
+    });
+
+  }
 }
 

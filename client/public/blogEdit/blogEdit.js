@@ -35,7 +35,7 @@ Template.blogEdit.events({
         // display the error to the user
         alert(error.reason);
       }  else {
-        Router.go('blog', {_id: blogId});
+        Router.go('/');
       }
     });
 
