@@ -16,7 +16,7 @@ Template.commentSubmit.events({
     var $body = $(e.target).find('[name=comment]');
     var comment = {
       body: $body.val(),
-      postId: tmpl.data._id
+      blogId: tmpl.data._id
     };
     
     var errors = {};

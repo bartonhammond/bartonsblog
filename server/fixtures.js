@@ -25,7 +25,7 @@ if (Blogs.find().count() === 0) {
   });
   
   Comments.insert({
-    postId: telescopeId,
+    blogId: telescopeId,
     userId: tom._id,
     author: tom.profile.name,
     submitted: new Date(now - 5 * 3600 * 1000),
@@ -33,7 +33,7 @@ if (Blogs.find().count() === 0) {
   });
   
   Comments.insert({
-    postId: telescopeId,
+    blogId: telescopeId,
     userId: sacha._id,
     author: sacha.profile.name,
     submitted: new Date(now - 3 * 3600 * 1000),
