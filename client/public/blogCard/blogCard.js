@@ -15,5 +15,20 @@ Template.blogCard.helpers({
   },
   ownPost: function() {
     return this.userId === Meteor.userId();
+  },
+  likeColor: function() {
+    if (Meteor.userId() && _.contains(this.likers, Meteor.userId())) {
+      return 'color: blue';
+    } else {
+      return '';
+    }
+  }
+
+});
+
+Template.blogCard.events({
+  'click .fa-thumbs-o-up': function(e) {
+    e.preventDefault();
+    Meteor.call('like', this._id);
   }
 });

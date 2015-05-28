@@ -21,6 +21,8 @@ if (Blogs.find().count() === 0) {
     publish: true,
     author: sacha.profile.name,
     commentsCount: 2,
+    likers: [],
+    likes: 0,
     submitted: new Date(now - 7 * 3600 * 1000)
   });
   
@@ -50,7 +52,9 @@ if (Blogs.find().count() === 0) {
       publish: true,
       author: sacha.profile.name,
       commentsCount: 0,
-      submitted: new Date(now - 7 * 3600 * 1000)
+      submitted: new Date(now - 7 * 3600 * 1000),
+      likers: [],
+      likes: 0,
     });
 
   }
