@@ -6,21 +6,17 @@
           <div id="portfolio-carousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-              <li data-target="#portfolio-carousel" data-slide-to="0" class="active"></li>
-              <li data-target="#portfolio-carousel" data-slide-to="1"></li>
-              <li data-target="#portfolio-carousel" data-slide-to="2"></li>
+              {{#each getCarouselArray}}
+                <li data-target="#portfolio-carousel" data-slide-to="{{index}}" class="{{active}}"></li>
+               {{/each}}
             </ol>
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
-              <div class="item active">
-                <img src="/img/sample/elephants-dream/sample-elephants-3.jpg" alt="" title="Elephant's Dream" />
+              {{#each getCarouselArray}}
+              <div class="item {{active}}">
+                <img src="{{value.url}}" alt="" title="{{value.name}}" />
               </div><!-- end item -->
-              <div class="item">
-                <img src="/img/sample/elephants-dream/sample-elephants-2.jpg" alt="" title="Elephant's Dream" />
-              </div><!-- end item -->
-              <div class="item">
-                <img src="/img/sample/elephants-dream/sample-elephants-1.jpg" alt="" title="Elephant's Dream" />
-              </div><!-- end item -->
+              {{/each}}
             </div>
             <!-- Controls -->
             <a class="left carousel-control" href="#portfolio-carousel" data-slide="prev">

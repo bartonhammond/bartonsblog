@@ -22,6 +22,7 @@ if (Blogs.find().count() === 0) {
     author: sacha.profile.name,
     commentsCount: 2,
     likers: [],
+    carousel: [],
     likes: 0,
     submitted: new Date(now - 7 * 3600 * 1000)
   });
@@ -53,6 +54,7 @@ if (Blogs.find().count() === 0) {
       author: sacha.profile.name,
       commentsCount: 0,
       submitted: new Date(now - 7 * 3600 * 1000),
+      carousel: [],
       likers: [],
       likes: 0,
     });

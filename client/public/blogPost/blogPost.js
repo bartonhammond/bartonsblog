@@ -1,5 +1,6 @@
 Template.blogPost.onCreated(function() {
   Session.set('blogSubmitErrors', {});
+  Session.set('carouselImgUrls', []);
 });
 
 Template.blogPost.helpers({
@@ -21,7 +22,8 @@ Template.blogPost.events(
         description: tmpl.find("#description").value,
         filters: "Film",
         numberComments: 0,
-        publish: tmpl.find("#publish").checked
+        publish: tmpl.find("#publish").checked,
+        carousel: Session.get('carouselImgUrls')
       };
 
       
