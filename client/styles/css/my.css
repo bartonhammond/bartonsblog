@@ -7,3 +7,16 @@
 .alert-fade {
     animation: fadeOut 2700ms ease-in 0s 1 forwards;
 }
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.item {
+    width: 800px;
+    min-height: 450px;
+    max-height: auto;
+    float: left;
+    margin: 3px;
+    padding: 3px;
+}
