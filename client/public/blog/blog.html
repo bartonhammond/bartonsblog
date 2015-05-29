@@ -11,10 +11,14 @@
                {{/each}}
             </ol>
             <!-- Wrapper for slides -->
-            <div class="carousel-inner">
+            <div class="carousel-inner" style="background-color: black">
               {{#each getCarouselArray}}
-              <div class="item {{active}}">
-                <img src="{{value.url}}" alt="" title="{{value.name}}" />
+              <div class="item {{active}}" style="margin: 0px;
+              padding: 0px">
+                <img src="{{value.url}}"
+                     style="height: 350px; object-fit:contain;
+                            object-position: 25% 0; "
+                     alt="" title="{{value.name}}" />
               </div><!-- end item -->
               {{/each}}
             </div>
