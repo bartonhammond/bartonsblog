@@ -20,3 +20,28 @@ img {
     margin: 3px;
     padding: 3px;
 }
+
+.sortable.source {
+  /*background: #9FA8DA;*/
+  flex: 0 0 auto;
+  margin-right: 1em;
+  cursor: move;
+  cursor: -webkit-grabbing;
+}
+
+.sortable.target {
+  /*background: #3F51B5;*/
+  flex: 1 1 auto;
+  margin-left: 1em;
+}
+.sortable-handle {
+  cursor: move;
+  cursor: -webkit-grabbing;
+}
+.sortable-handle.pull-right {
+  margin-top: 0.3em;
+}
+
+.sortable-ghost {
+  opacity: 0.6;
+}

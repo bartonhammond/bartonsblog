@@ -15,24 +15,33 @@ Template.carouselZone.rendered = function(){
   Dropzone.autoDiscover = true;
 
   var dropzone = new Dropzone("form#mycarouselzone", {
-    maxFilesize: 3,//mb
+    maxFilesize: 6,//mb
     acceptedFiles: 'image/gif, image/jpeg, image/png, image/bmp',
     accept: function(file,done) {
       var metaContext = {fileName: file.name};
       var myImageUploader = new Slingshot.Upload("myImageUploads", metaContext);
-      var thisDone = done;
       processImage(file, 800, 450, function(dataURI) {
         var blob = dataURItoBlob(dataURI);
         myImageUploader.send(blob, function (error, downloadUrl) {
           if (error) {
-            thisDone(error);
+            done(error);
             throwError(error);
           }
-          var imgUrls = Session.get('carouselImgUrls');
-          var order = imgUrls.length;
-          imgUrls.push({'order': order, 'name': file.name, 'url': downloadUrl, 'desc': 'double-click to change'});
-          Session.set('carouselImgUrls',imgUrls);
-          thisDone();
+
+          var carousel = {'uuid': Session.get('carouselImagesUUID'),
+                          'name': file.name,
+                          'url': downloadUrl,
+                          'desc': 'double-click to change'};
+          
+          Meteor.call('carouselImageInsert', carousel, function(error, result) {
+            if (error) {
+              done(error.reason);
+              throwError(error.reason);
+            }
+            dropzone.emit("complete", file);
+            dropzone.emit('success', file);
+            done();
+          });
         });
       });
     }

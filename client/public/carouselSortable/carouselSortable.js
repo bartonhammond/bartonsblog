@@ -2,7 +2,21 @@
 
 Template.carouselSortable.helpers({
   carousel: function () {
-    return Session.get('carouselImgUrls') ;
+    return CarouselImages.find({uuid: Session.get('carouselImagesUUID')}, {
+      sort: {order: 1}
+    });
+  },
+  carouselOptions: {
+    // event handler for reordering attributes
+    onSort: function (event) {
+      console.log('Item %s went from #%d to #%d',
+                  event.data.name, event.oldIndex, event.newIndex
+                 );
+    },
+     // Element is removed from the list into another list
+    onRemove: function (evt) {
+      console.log(evt);
+    }
   }
 });
 
@@ -27,14 +41,9 @@ Template.sortableItemTarget.events({
     var order = this.order;
     input.hide();
     template.$('.desc').show();
-    // TODO - what is the collection here? We'll hard-code for now.
-    // https://github.com/meteor/meteor/issues/3303
+
     if (this.desc !== input.val() && this.desc !== '') {
-      //order
-      var imgs = Session.get('carouselImgUrls') ;
-      imgs[order].desc = input.val();
-      Session.set('carouselImgUrls',imgs);
-      console.log('new desc: ' + input.val());
+      CarouselImages.update(this._id, {$set: {desc: input.val()}});
     }
   },
   'keydown input[type=text]': function (event, template) {
@@ -51,3 +60,10 @@ Template.sortableItemTarget.events({
   }
 });
 
+// you can add events to all Sortable template instances
+Template.sortable.events({
+  'click .close': function (event, template) {
+    // `this` is the data context set by the enclosing block helper (#each, here)
+    template.collection.remove(this._id);
+  }
+});
