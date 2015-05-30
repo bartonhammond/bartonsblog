@@ -1,6 +1,6 @@
 Template.blogPost.onCreated(function() {
   Session.set('blogSubmitErrors', {});
-  Session.set('carouselImagesUUID', generateUUID());
+  Session.set('UUID', generateUUID());
 });
 
 Template.blogPost.helpers({
@@ -17,6 +17,7 @@ Template.blogPost.events(
     'submit form': function(e, tmpl) {
       e.preventDefault();
       var blog = {
+        uuid: Session.get('UUID'),
         typeCard: tmpl.find("#typeCard").value,
         img: "img/sample/sintel/sample-sintel-1.jpg",
         title: tmpl.find("#title").value,
@@ -24,7 +25,7 @@ Template.blogPost.events(
         filters: "Film",
         numberComments: 0,
         publish: tmpl.find("#publish").checked,
-        carousel: CarouselImages.find({uuid: Session.get('carouselImagesUUID') },
+        carousel: CarouselImages.find({uuid: Session.get('UUID') },
                                       {sort: {order: 1}}
                                      ).fetch()};
       

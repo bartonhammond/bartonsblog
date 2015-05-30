@@ -2,7 +2,7 @@
 
 Template.carouselSortable.helpers({
   carousel: function () {
-    return CarouselImages.find({uuid: Session.get('carouselImagesUUID')}, {
+    return CarouselImages.find({uuid: Session.get('UUID')}, {
       sort: {order: 1}
     });
   },
