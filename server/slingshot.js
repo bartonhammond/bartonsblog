@@ -15,8 +15,9 @@ Slingshot.createDirective("myImageUploads", Slingshot.S3Storage, {
   },
 
   key: function (file, metaContext) {
-    //Store file into a directory by the user's id
-    return this.userId + "/" + metaContext.fileName;
+    //Store file into a directory by the user's id && uuid which is
+    //part of blog
+    return this.userId + "/" + metaContext.uuid + "/" + metaContext.fileName;
   }
 });
 
