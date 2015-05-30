@@ -29,7 +29,8 @@ Template.carouselZone.rendered = function(){
             throwError(error);
           }
           var imgUrls = Session.get('carouselImgUrls');
-          imgUrls.push({'name': file.name, 'url': downloadUrl});
+          var order = imgUrls.length;
+          imgUrls.push({'order': order, 'name': file.name, 'url': downloadUrl, 'desc': 'double-click to change'});
           Session.set('carouselImgUrls',imgUrls);
           thisDone();
         });
