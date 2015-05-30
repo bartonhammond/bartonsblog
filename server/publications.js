@@ -10,3 +10,9 @@ Meteor.publish('comments', function(blogId) {
 Meteor.publish('notifications', function() {
   return Notifications.find({userId: this.userId, read: false});
 });
+
+Meteor.publish('carouselImages', function() {
+  return CarouselImages.find({userId: this.userId});
+});
+
+Sortable.collections = ['carouselImages'];

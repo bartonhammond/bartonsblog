@@ -3,7 +3,12 @@
   <div class="row">
     <div class="list-pair col-sm-12">
       <div class="sortable target" id="object">
-        {{#sortable items=carousel animation="100" handle=".sortable-handle" ghostClass="sortable-ghost" }}
+        {{#sortable
+        items=carousel
+        options=carouselOptions
+        animation="100"
+        handle=".sortable-handle"
+        ghostClass="sortable-ghost" }}
           {{> sortableItemTarget}}
         {{/sortable}}
       </div>
@@ -14,8 +19,8 @@
 
 <template name="sortableItemTarget">
   <div data-id="{{order}}" class="sortable-item removable well well-sm">
-     <img src="{{url}}" style="height: 50px; object-fit:contain;"/>
-     <i class="fa fa-bars pull-right"></i>
+    <img src="{{url}}" style="height: 50px; object-fit:contain;"/>
+    <i class="sortable-handle fa fa-bars pull-right"></i>
     <span class="badge">{{order}}</span>
     <span class="desc">{{desc}}</span>
 

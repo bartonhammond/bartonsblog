@@ -1,6 +1,6 @@
 Template.blogPost.onCreated(function() {
   Session.set('blogSubmitErrors', {});
-  Session.set('carouselImgUrls', []);
+  Session.set('carouselImagesUUID', generateUUID());
 });
 
 Template.blogPost.helpers({
@@ -11,6 +11,7 @@ Template.blogPost.helpers({
     return !!Session.get('blogSubmitErrors')[field] ? 'has-error' : '';
   }
 });
+
 Template.blogPost.events(
   {
     'submit form': function(e, tmpl) {
@@ -23,9 +24,10 @@ Template.blogPost.events(
         filters: "Film",
         numberComments: 0,
         publish: tmpl.find("#publish").checked,
-        carousel: Session.get('carouselImgUrls')
-      };
-
+        carousel: CarouselImages.find({uuid: Session.get('carouselImagesUUID') },
+                                      {sort: {order: 1}}
+                                     ).fetch()};
+      
       
       var errors = validateBlog(blog);
       if (_.keys(errors).length > 0) 
