@@ -21,3 +21,6 @@ ccorcos:clientside-image-manipulation
 rubaxa:sortable
 summernote:standalone
 chrismbeckett:toastr
+hitchcott:ez-modal
+reactive-dict
+raix:eventemitter

@@ -1,5 +1,27 @@
+
+uploadDescriptionImage = function(file, $summernote, ezModal) {
+
+  var metaContext = {fileName: file.name, uuid: Session.get('UUID')};
+  var myImageUploader = new Slingshot.Upload("myImageUploads", metaContext);
+  processImage(file, 800, 450, function(dataURI) {
+    var blob = dataURItoBlob(dataURI);
+    myImageUploader.send(blob, function (error, downloadUrl) {
+      if (error) {
+        done(error);
+        throwError(error);
+      }
+      $summernote.summernote('editor.insertImage',downloadUrl);
+      Event.emit('summernoteImageUploadComplete', {
+        data: file.name,
+        ezModal: ezModal
+      })
+    });
+  });
+}
+
 Template.blogPost.rendered = function() {
-  $('#summernote').summernote({
+  var $summernote = $('#summernote');
+  $summernote.summernote({
     width: '100%',
     height: '300px',
     focus: true,
@@ -8,14 +30,23 @@ Template.blogPost.rendered = function() {
       ['color', ['color']],
       ['font', ['bold', 'underline', 'clear']],
       ['para', ['ul','ol', 'paragraph']],
-      ['insert', ['link', 'table', 'hr']],
-      ['group',['video']]
-      
-    ]
-  });
+      ['insert', ['link', 'table', 'hr']]
+    ],
+    onImageUpload: function(files) {
 
+      var ezModal = EZModal({
+        size: 'lg',
+        classes: 'text-center',
+        bodyTemplate: 'previews',
+        dataContext: {files: files},
+        hideFooter: true
+      });
 
-  
+      for (var i = 0; i < files.length; i++) {
+        uploadDescriptionImage(files[i], $summernote, ezModal);
+      };
+    }//onImageUpload
+  });//summernote
 };
 
 
