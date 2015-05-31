@@ -13,7 +13,7 @@ Template.carouselSortable.helpers({
                   event.data.name, event.oldIndex, event.newIndex
                  );
     },
-     // Element is removed from the list into another list
+    // Element is removed from the list into another list
     onRemove: function (evt) {
       console.log(evt);
     }
@@ -57,7 +57,29 @@ Template.sortableItemTarget.events({
       event.preventDefault();
       event.target.blur();
     }
+  },
+  'click .copyURL': function (event, template) {
+    Session.set('copyURL', this.url);
+    toastr.options = {
+      "closeButton": true,
+      "debug": false,
+      "newestOnTop": false,
+      "progressBar": false,
+      "positionClass": "toast-top-right",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+    toastr.success('copied');
   }
+  
 });
 
 // you can add events to all Sortable template instances

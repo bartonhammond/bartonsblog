@@ -6,6 +6,11 @@ Template.blogCard.helpers({
       return moment(new Date(this.submitted.toISOString())).format('dddd MMMM Do YYYY');
     }
   },
+  firstImage: function() {
+    if (this.carousel && this.carousel.length > 0) {
+      return this.carousel[0].url;
+    }
+  },
   shortDescription: function() {
     if (this.description.length > 100) {
       return this.description.slice(0,99);

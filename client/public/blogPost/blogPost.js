@@ -1,6 +1,28 @@
+Template.blogPost.rendered = function() {
+  $('#summernote').summernote({
+    width: '100%',
+    height: '300px',
+    focus: true,
+    toolbar:[
+      ['style', ['style', 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+      ['color', ['color']],
+      ['font', ['bold', 'underline', 'clear']],
+      ['para', ['ul','ol', 'paragraph']],
+      ['insert', ['link', 'table', 'hr']],
+      ['group',['video']]
+      
+    ]
+  });
+
+
+  
+};
+
+
 Template.blogPost.onCreated(function() {
   Session.set('blogSubmitErrors', {});
   Session.set('UUID', generateUUID());
+  Session.set('copyURL','');
 });
 
 Template.blogPost.helpers({
@@ -21,7 +43,7 @@ Template.blogPost.events(
         typeCard: tmpl.find("#typeCard").value,
         img: "img/sample/sintel/sample-sintel-1.jpg",
         title: tmpl.find("#title").value,
-        description: tmpl.find("#description").value,
+        description: $(e.target).find('#summernote').code(),
         filters: "Film",
         numberComments: 0,
         publish: tmpl.find("#publish").checked,
