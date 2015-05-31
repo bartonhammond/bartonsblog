@@ -20,13 +20,17 @@ uploadDescriptionImage = function(file, $summernote, ezModal) {
 }
 
 Template.blogPost.rendered = function() {
+  $('[data-toggle="tooltip"]').tooltip();
+  
+  $('#fromDate').datepicker();
+  $('#toDate').datepicker();
   var $summernote = $('#summernote');
   $summernote.summernote({
     width: '100%',
     height: '300px',
     focus: true,
     toolbar:[
-      ['style', ['style', 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+      ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
       ['color', ['color']],
       ['font', ['bold', 'underline', 'clear']],
       ['para', ['ul','ol', 'paragraph']],
@@ -65,17 +69,25 @@ Template.blogPost.helpers({
   }
 });
 
+getISODate = function(dateString) {
+  var parts = dateString.split('/');
+  //please put attention to the month (parts[0]), Javascript counts months from 0:
+  // January - 0, February - 1, etc
+  var mydate = new Date(parts[2],parts[0]-1,parts[1]);
+  return mydate;
+}
 Template.blogPost.events(
   {
     'submit form': function(e, tmpl) {
       e.preventDefault();
+      
       var blog = {
         uuid: Session.get('UUID'),
-        typeCard: tmpl.find("#typeCard").value,
-        img: "img/sample/sintel/sample-sintel-1.jpg",
         title: tmpl.find("#title").value,
+        lead: tmpl.find("#lead").value,
+        fromDate: getISODate(tmpl.find("#fromDate").value),
+        toDate: getISODate(tmpl.find("#toDate").value),
         description: $(e.target).find('#summernote').code(),
-        filters: "Film",
         numberComments: 0,
         publish: tmpl.find("#publish").checked,
         carousel: CarouselImages.find({uuid: Session.get('UUID') },
