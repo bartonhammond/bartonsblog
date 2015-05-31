@@ -18,12 +18,12 @@
 </template>
 
 <template name="sortableItemTarget">
-  <div data-id="{{order}}" class="sortable-item removable well well-sm">
+  <div data-id="{{order}}" class="sortable-item removable well
+       well-sm">
+    <i class="copyURL fa fa-files-o fa-lg"></i>
     <img src="{{url}}" style="height: 50px; object-fit:contain;"/>
     <i class="sortable-handle fa fa-bars pull-right"></i>
-    <span class="badge">{{order}}</span>
     <span class="desc">{{desc}}</span>
-
     <button type="button" class="close" data-dismiss="alert">
       <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
     </button>

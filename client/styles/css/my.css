@@ -45,3 +45,10 @@ img {
 .sortable-ghost {
   opacity: 0.6;
 }
+.copyURL {
+    margin-right: 10px;
+}
+
+.copyURL:hover {
+   color: green;
+}

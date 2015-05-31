@@ -31,7 +31,7 @@ Template.carouselZone.rendered = function(){
           var carousel = {'uuid': Session.get('UUID'),
                           'name': file.name,
                           'url': downloadUrl,
-                          'desc': 'double-click to change'};
+                          'desc': 'double-click to add description'};
           
           Meteor.call('carouselImageInsert', carousel, function(error, result) {
             if (error) {
