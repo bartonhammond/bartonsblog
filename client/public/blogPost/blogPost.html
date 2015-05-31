@@ -7,64 +7,88 @@
           <p class="lead">The information entered here will be
           presented to the public when the "public" is checked.</p>
         </div><!-- end page-header -->
-        <h3>New Post</h3>
+
         <form class="form-horizontal">
+          <label class="control-label">Carousel images</label>
           {{> carouselZone}}
 
           {{> carouselSortable}}
-          
-          <div class="form-group {{errorClass 'typeCard'}}">
-            <label class="control-label" for="typeCard">Type Card</label>
-            <div class="controls">
-              <div class="row">
-                <div class="col-md-6">
-                  <input type="text" class="form-control"
-                  id="typeCard" placeholder="Type card" />
-                </div><!-- end col md -->
-              </div><!-- end row -->
-              <span class="help-block">Enter words that describe this
-              blog post that are like a category e.g. family
-                joe </span>
-              <span class="help-inline">{{errorMessage 'typeCard'}}</span>
-            </div><!-- end controls-->
-          </div><!-- end form-group -->
 
-
-           <div class="form-group {{errorClass 'title'}}">
+          <div class="form-group {{errorClass 'title'}}">
             <label class="control-label" for="title">Title</label>
             <div class="controls">
               <div class="row">
                 <div class="col-md-6">
-                  <input type="text" class="form-control"
+                  <input data-toggle="tooltip" title="Provide a
+                  meaningful summary of this blog" type="text" class="form-control"
                   id="title" placeholder="Title" />
                 </div><!-- end col md -->
               </div><!-- end row -->
-              <span class="help-block">Brief sentence of main
-                idea.</span>
-                <span class="help-inline">{{errorMessage 'title'}}</span>
+            </div><!-- end controls-->
+           </div><!-- end form-group -->
+
+          <div class="form-group">
+            <label class="control-label" for="lead">Lead</label>
+            <div class="controls">
+              <textarea data-toggle="tooltip" title="Provide some
+              interesting lead in that describes what the blog is
+              about."
+                        id="lead" rows="3" maxlength="500" class="form-control"></textarea>
             </div><!-- end controls-->
           </div><!-- end form-group -->
+
+          <div class="form-group {{errorClass 'fromDate'}}">
+            <label class="control-label" for="fromDate">From Date</label>
+            <div class="controls">
+              <div class="row">
+                <div class="col-md-6">
+                  <input data-toggle="tooltip"
+                         title="Click this field to select a date"
+                         type="text" class="form-control" id="fromDate">
+                </div><!-- end col md -->
+              </div><!-- end row -->
+            </div><!-- end controls-->
+             <label class="control-label" for="toDate">ToDate</label>
+            <div class="controls">
+              <div class="row">
+                <div class="col-md-6">
+                  <input type="text"
+                         data-toggle="tooltip"
+                         title="Click this field to select a date"
+                         class="form-control" id="toDate">
+                </div><!-- end col md -->
+              </div><!-- end row -->
+            </div><!-- end controls-->
+          </div><!-- end form-group -->
+
           
           <div class="form-group {{errorClass 'description'}}">
             <label class="control-label" for="summernote">Description</label>
             <div class="controls">
               <div id="summernote">Share something interesting </div>
             </div><!-- end controls-->
-             <span class="help-block">This is the blog post itself.
-             The first few words are included on the home
-               page. </span>
-               <span class="help-inline">{{errorMessage 'description'}}</span>
           </div><!-- end form-group -->
 
-          <label class="checkbox" style="padding-top: 0">
-              <input type="checkbox" id="publish"  />
+          <label data-toggle="tooltip"
+                   title="By checking this, the blog is available for
+                          viewing"
+                 data-placement="left"
+                 class="checkbox" style="padding-top: 0">
+            <input type="checkbox"
+                   id="publish"  />
             <span></span>
             Publish
           </label>
 
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Save changes</button>
-            <button type="button" class="btn btn-grey">Cancel</button>
+            <button type="submit"
+                    data-toggle="tooltip"
+                   title="Clicking this saves your work"
+                    class="btn btn-primary">Save changes</button>
+            <button
+               data-toggle="tooltip"
+               title="Clicking this loses all your work"
+               type="button" class="btn btn-grey">Cancel</button>
           </div><!-- end form actions -->
           
         </form>
