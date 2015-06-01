@@ -1,1 +1,1 @@
-meteor --settings=config.json
+meteor --settings=settings.json
