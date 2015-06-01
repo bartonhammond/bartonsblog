@@ -22,8 +22,13 @@
        well-sm">
     <img src="{{url}}" style="height: 50px; object-fit:contain;"/>
     <i class="sortable-handle fa fa-bars pull-right"></i>
-    <span class="desc">{{desc}}</span>
-    <button type="button" class="close" data-dismiss="alert">
+    <span data-toggle="tooltip"
+          title="Double click your mouse to edit this description"
+          class="desc">{{desc}}</span>
+    <button type="button"
+            data-toggle="tooltip"
+            title="Click the X to delete this image"
+            class="close" data-dismiss="alert">
       <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
     </button>
   </div>

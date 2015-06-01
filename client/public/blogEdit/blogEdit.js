@@ -1,31 +1,24 @@
 Template.blogEdit.onCreated(function() {
-  Session.set('postSubmitErrors', {});
+  Session.set('blogSubmitErrors', {});
 });
-
-Template.blogEdit.helpers({
-  errorMessage: function(field) {
-    return Session.get('postSubmitErrors')[field];
-  },
-  errorClass: function (field) {
-    return !!Session.get('postSubmitErrors')[field] ? 'has-error' : '';
-  }
-});
-
 Template.blogEdit.events({
   'submit form': function(e, tmpl) {
     e.preventDefault();
     var blogId = this._id;
-    
+    var _self = this;
     var blog = {
-      typeCard: tmpl.find("#typeCard").value,
-      img: "img/sample/sintel/sample-sintel-1.jpg",
+      uuid: _self.uuid,
       title: tmpl.find("#title").value,
-      description: tmpl.find("#description").value,
-      filters: "Film",
-      numberComments: 0,
-      publish: tmpl.find("#publish").checked
-    };
-
+      lead: tmpl.find("#lead").value,
+      fromDate: getISODate(tmpl.find("#fromDate").value),
+      toDate: getISODate(tmpl.find("#toDate").value),
+      description: $(e.target).find('#summernote').code(),
+      publish: tmpl.find("#publish").checked,
+      carousel: CarouselImages.find({uuid: _self.uuid},
+                                     {sort: {order: 1}}
+                                   ).fetch()
+    }//blog
+    
     var errors = validateBlog(blog);
     if (_.keys(errors).length > 0) 
       return Session.set('postSubmitErrors', errors)
