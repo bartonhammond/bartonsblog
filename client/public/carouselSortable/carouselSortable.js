@@ -1,10 +1,16 @@
-// Define an object type by dragging together attributes
-
 Template.carouselSortable.helpers({
   carousel: function () {
-    return CarouselImages.find({uuid: Session.get('UUID')}, {
-      sort: {order: 1}
-    });
+    var _self = this;
+    if (!_.isUndefined(Router.current().params._id)) {
+      var toReturn = CarouselImages.find({uuid: _self.uuid}, {
+        sort: {order: 1}
+      });
+      return toReturn;
+    } else {
+      return CarouselImages.find({uuid: Session.get('UUID')}, {
+        sort: {order: 1}
+      });
+    } 
   },
   carouselOptions: {
     // event handler for reordering attributes

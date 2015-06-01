@@ -6,7 +6,14 @@ Template.carouselZone.rendered = function(){
     maxFilesize: 6,//mb
     acceptedFiles: 'image/gif, image/jpeg, image/png, image/bmp',
     accept: function(file,done) {
-      var metaContext = {fileName: file.name, uuid: Session.get('UUID')};
+      var _self = this;
+      var uuid;
+      if (_.isUndefined(Router.current().params._id)) {
+        uuid = Session.get('UUID');
+      } else {
+        uuid = _self.uuid;
+      }
+      var metaContext = {fileName: file.name, uuid: uuid};
       var myImageUploader = new Slingshot.Upload("myImageUploads", metaContext);
       processImage(file, 800, 450, function(dataURI) {
         var blob = dataURItoBlob(dataURI);
@@ -15,8 +22,7 @@ Template.carouselZone.rendered = function(){
             done(error);
             throwError(error);
           }
-
-          var carousel = {'uuid': Session.get('UUID'),
+          var carousel = {'uuid': uuid,
                           'name': file.name,
                           'url': downloadUrl,
                           'desc': 'double-click to add description'};

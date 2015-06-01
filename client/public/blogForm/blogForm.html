@@ -37,7 +37,7 @@
         <div class="row">
           <div class="col-md-6">
             <input data-toggle="tooltip"
-                   value="{{showDate fromDate}}"
+                   value="{{showEditableDate fromDate}}"
                    title="Click this field to select a date"
                    type="text" class="form-control" id="fromDate">
           </div><!-- end col md -->
@@ -50,7 +50,7 @@
             <input type="text"
                    data-toggle="tooltip"
                    title="Click this field to select a date"
-                   value="{{showDate toDate}}"
+                   value="{{showEditableDate toDate}}"
                    class="form-control"
                    id="toDate">
           </div><!-- end col md -->
@@ -62,7 +62,7 @@
     <div class="form-group {{errorClass 'description'}}">
       <label class="control-label" for="summernote">Description</label>
       <div class="controls">
-        <div id="summernote">Share something interesting </div>
+        <div id="summernote">{{{description}}}</div>
       </div><!-- end controls-->
     </div><!-- end form-group -->
 

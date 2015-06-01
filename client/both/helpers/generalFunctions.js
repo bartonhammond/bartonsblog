@@ -16,7 +16,6 @@ uploadDescriptionImage = function(file, $summernote, ezModal) {
     var blob = dataURItoBlob(dataURI);
     myImageUploader.send(blob, function (error, downloadUrl) {
       if (error) {
-        done(error);
         throwError(error);
       }
       $summernote.summernote('editor.insertImage',downloadUrl);

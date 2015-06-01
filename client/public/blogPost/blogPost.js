@@ -6,7 +6,6 @@ Template.blogPost.onCreated(function() {
 Template.blogPost.events(
   {
     'submit form': function(e, tmpl) {
-      debugger;
       e.preventDefault();
       
       var blog = {

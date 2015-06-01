@@ -3,6 +3,7 @@ Template.blogForm.rendered = function() {
   var _self = this;
   $('#fromDate').datepicker();
   $('#toDate').datepicker();
+
   var $summernote = $('#summernote');
   $summernote.summernote({
     width: '100%',
@@ -28,21 +29,9 @@ Template.blogForm.rendered = function() {
       for (var i = 0; i < files.length; i++) {
         uploadDescriptionImage(files[i], $summernote, ezModal);
       };
-    },//onImageUpload
-    onInit: function() {
-      if (Router.current().params) {
-        var timer = Meteor.setInterval(function() {
-          if (_self.data.description) {
-            $summernote.code(_self.data.description);
-            Meteor.clearTimeout(timer);
-          }
-          
-        }, 300);
-      }
-    }
+    }//onImageUpload
   });
 }
-                        
 
 Template.blogForm.helpers({
   errorMessage: function(field) {

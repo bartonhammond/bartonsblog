@@ -5,15 +5,20 @@ Template.blogEdit.events({
   'submit form': function(e, tmpl) {
     e.preventDefault();
     var blogId = this._id;
-    
+    var _self = this;
     var blog = {
-      img: "img/sample/sintel/sample-sintel-1.jpg",
+      uuid: _self.uuid,
       title: tmpl.find("#title").value,
-      description: tmpl.find("#description").value,
-      numberComments: 0,
-      publish: tmpl.find("#publish").checked
-    };
-
+      lead: tmpl.find("#lead").value,
+      fromDate: getISODate(tmpl.find("#fromDate").value),
+      toDate: getISODate(tmpl.find("#toDate").value),
+      description: $(e.target).find('#summernote').code(),
+      publish: tmpl.find("#publish").checked,
+      carousel: CarouselImages.find({uuid: _self.uuid},
+                                     {sort: {order: 1}}
+                                   ).fetch()
+    }//blog
+    
     var errors = validateBlog(blog);
     if (_.keys(errors).length > 0) 
       return Session.set('postSubmitErrors', errors)
