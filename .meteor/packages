@@ -6,7 +6,6 @@
 
 meteor-platform
 underscore
-natestrauser:font-awesome
 twbs:bootstrap
 iron:router
 sacha:spin
@@ -25,3 +24,4 @@ hitchcott:ez-modal
 reactive-dict
 raix:eventemitter
 rajit:bootstrap3-datepicker
+natestrauser:font-awesome

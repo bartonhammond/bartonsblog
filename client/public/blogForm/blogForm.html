@@ -1,0 +1,83 @@
+<template name="blogForm">
+
+    <label class="control-label">Carousel images</label>
+    {{> carouselZone}}
+
+    {{> carouselSortable}}
+
+    <div class="form-group {{errorClass 'title'}}">
+      <label class="control-label" for="title">Title</label>
+      <div class="controls">
+        <div class="row">
+          <div class="col-md-6">
+            <input data-toggle="tooltip"
+                   value="{{title}}"
+                   title="Provide a meaningful summary of this blog" 
+                   type="text" class="form-control"
+                   id="title" placeholder="Title" />
+          </div><!-- end col md -->
+        </div><!-- end row -->
+      </div><!-- end controls-->
+    </div><!-- end form-group -->
+
+    <div class="form-group">
+      <label class="control-label" for="lead">Lead</label>
+      <div class="controls">
+        <textarea data-toggle="tooltip" title="Provide some
+                                               interesting lead in that describes what the blog is
+                                               about."
+                  value="{{lead}}"
+                  id="lead" rows="3" maxlength="500" class="form-control"></textarea>
+      </div><!-- end controls-->
+    </div><!-- end form-group -->
+
+    <div class="form-group {{errorClass 'fromDate'}}">
+      <label class="control-label" for="fromDate">From Date</label>
+      <div class="controls">
+        <div class="row">
+          <div class="col-md-6">
+            <input data-toggle="tooltip"
+                   value="{{showEditableDate fromDate}}"
+                   title="Click this field to select a date"
+                   type="text" class="form-control" id="fromDate">
+          </div><!-- end col md -->
+        </div><!-- end row -->
+      </div><!-- end controls-->
+      <label class="control-label" for="toDate">ToDate</label>
+      <div class="controls">
+        <div class="row">
+          <div class="col-md-6">
+            <input type="text"
+                   data-toggle="tooltip"
+                   title="Click this field to select a date"
+                   value="{{showEditableDate toDate}}"
+                   class="form-control"
+                   id="toDate">
+          </div><!-- end col md -->
+        </div><!-- end row -->
+      </div><!-- end controls-->
+    </div><!-- end form-group -->
+
+    
+    <div class="form-group {{errorClass 'description'}}">
+      <label class="control-label" for="summernote">Description</label>
+      <div class="controls">
+        <div id="summernote">{{{description}}}</div>
+      </div><!-- end controls-->
+    </div><!-- end form-group -->
+
+    <label data-toggle="tooltip"
+           title="By checking this, the blog is available for
+                  viewing"
+           data-placement="left"
+           class="checkbox" style="padding-top: 0">
+      <input type="checkbox"
+             {{checkedIf publish}}
+             id="publish"  />
+      <span></span>
+      Publish
+    </label>
+
+
+
+</template>
