@@ -7,12 +7,8 @@ Template.carouselZone.rendered = function(){
     acceptedFiles: 'image/gif, image/jpeg, image/png, image/bmp',
     accept: function(file,done) {
       var _self = this;
-      var uuid;
-      if (_.isUndefined(Router.current().params._id)) {
-        uuid = Session.get('UUID');
-      } else {
-        uuid = _self.uuid;
-      }
+      var uuid = Session.get('UUID');
+
       var metaContext = {fileName: file.name, uuid: uuid};
       var myImageUploader = new Slingshot.Upload("myImageUploads", metaContext);
       processImage(file, 800, 450, function(dataURI) {
