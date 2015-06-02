@@ -1,5 +1,6 @@
 Template.blogEdit.onCreated(function() {
   Session.set('blogSubmitErrors', {});
+  Session.set('UUID', this.data.uuid);
 });
 Template.blogEdit.events({
   'submit form': function(e, tmpl) {
@@ -7,14 +8,14 @@ Template.blogEdit.events({
     var blogId = this._id;
     var _self = this;
     var blog = {
-      uuid: _self.uuid,
+      uuid: Session.get('UUID'),
       title: tmpl.find("#title").value,
       lead: tmpl.find("#lead").value,
       fromDate: getISODate(tmpl.find("#fromDate").value),
       toDate: getISODate(tmpl.find("#toDate").value),
       description: $(e.target).find('#summernote').code(),
       publish: tmpl.find("#publish").checked,
-      carousel: CarouselImages.find({uuid: _self.uuid},
+      carousel: CarouselImages.find({uuid: Session.get('UUID')},
                                      {sort: {order: 1}}
                                    ).fetch()
     }//blog
