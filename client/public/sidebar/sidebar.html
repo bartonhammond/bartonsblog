@@ -2,7 +2,11 @@
   <div class="col-md-3 sidebar">
     <div class="navbar" role="navigation">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#rebound-navbar-collapse"><span class="fa fa-bars"></span> Menu</button>
+        <button type="button" class="navbar-toggle"
+                data-toggle="collapse"
+                data-target="#rebound-navbar-collapse">
+          <span class="fa fa-bars"></span> Menu
+        </button>
         <a href="/" class="navbar-brand">Livin & Lovin</a>
         <p class="brand-text">Thoughts about our travels.</p>
         {{> errors}}
@@ -12,14 +16,20 @@
           <li class="title">Menu</li>
           {{> loginButtons}}
           
-          <li class="active">
-            <a id="publishedBlogs" href="/">Home</a></li>
+          <li class="{{isActiveRoute 'blogs_home0'}}">
+            <a href="/">Home</a>
+          </li>
+
           {{#if currentUser}}
           <li class="dropdown">
-            {{> notifications}}
+             {{> notifications}}
           </li>
-          <li><a href="{{pathFor 'blogPost'}}">New blog</a></li>
-          <li><a id="nonpublishedBlogs" href="/">Non-pubished blogs</a></li>
+          <li class="{{isActiveRoute 'blogPost'}}">
+            <a href="{{pathFor 'blogPost'}}">New blog</a>
+          </li>
+          <li class="{{isActiveRoute 'blogs2_home0'}}">
+            <a  href="/blogs">Non-pubished blogs</a>
+          </li>
           {{/if}}
           
           <li><a href="about.html">About</a></li>
