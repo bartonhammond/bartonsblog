@@ -1,2 +1,2 @@
 # This is our release
-*  1.26
+*  1.27
