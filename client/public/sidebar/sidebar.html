@@ -32,9 +32,12 @@
           </li>
           {{/if}}
           
-          <li><a href="about.html">About</a></li>
-          <li><a href="hire.html">Hire Me</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li class="{{isActiveRoute 'about'}}">
+            <a href="{{pathFor 'about'}}">About</a>
+          </li>
+          <li class="{{isActiveRoute 'contact'}}">
+            <a href="{{pathFor 'contact'}}">Contact</a>
+          </li>
         </ul>
         <form class="navbar-form" role="search">
           <div class="input-group">
@@ -44,29 +47,6 @@
             </span>
           </div><!-- end input group -->
         </form><!-- end navbar-form -->
-        <ul class="nav navbar-nav">
-          <li class="title">Categories</li>
-          <li><a href="blog-categories.html">Galleries</a> <span>(9)</span></li>
-          <li><a href="blog-categories.html">Images</a> <span>(31)</span></li>
-          <li><a href="blog-categories.html">Multimedia</a> <span>(15)</span></li>
-          <li><a href="blog-categories.html">Video</a> <span>(18)</span></li>
-          <li><a href="blog-categories.html">Gaming</a> <span>(11)</span></li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li class="title">Archives</li>
-          <li><a href="blog-archives.html">December 2013</a> <span>(9)</span></li>
-          <li><a href="blog-archives.html">November 2013</a> <span>(21)</span></li>
-          <li><a href="blog-archives.html">October 2013</a> <span>(5)</span></li>
-          <li><a href="blog-archives.html">September 2013</a> <span>(8)</span></li>
-          <li><a href="blog-archives.html">August 2013</a> <span>(15)</span></li>
-        </ul>
-        <ul class="nav navbar-nav nav-social hidden-sm hidden-xs">
-          <li class="title">Social</li>
-          <li><a href="#none">Twitter</a></li>
-          <li><a href="#none">Facebook</a></li>
-          <li><a href="#none">LinkedIn</a></li>
-          <li><a href="#none">Dribbble</a></li>
-        </ul>
       </div><!-- end navbar-collapse -->
     </div><!-- end navbar -->
   </div><!-- end col -->
