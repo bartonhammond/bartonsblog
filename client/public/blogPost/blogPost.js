@@ -1,3 +1,10 @@
+Template.blogPost.invokeAfterLoad = function() {
+  Meteor.defer(function () {
+    $('body').scrollTop(0);
+  });
+
+};
+
 Template.blogPost.onCreated(function() {
   Session.set('blogSubmitErrors', {});
   Session.set('UUID', generateUUID());
