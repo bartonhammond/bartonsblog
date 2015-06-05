@@ -6,6 +6,11 @@ Meteor.publish('unpublishedBlogs', function() {
   return Blogs.find({publish: false});
 });
 
+Meteor.publish('blog', function(blogId) {
+  check(blogId, String);
+  return Blogs.find({_id: blogId});
+});
+
 Meteor.publish('comments', function(blogId) {
   check(blogId, String);
   return Comments.find({blogId: blogId});

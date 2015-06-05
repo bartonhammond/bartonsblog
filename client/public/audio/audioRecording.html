@@ -1,0 +1,36 @@
+<template name="audioRecording">
+  <hr/>
+  <a id="startRecordingBtn"
+     style="margin-right: 5px"
+     class="btn btn-success" href="#">
+    <i class="fa fa-microphone"></i>Record
+  </a>
+  <a id="stopRecordingBtn"
+     style="margin-right: 5px"
+     class="btn btn-danger" href="#">
+    <i class="fa fa-stop"></i>Stop
+  </a>
+
+  <hr/>
+  {{#each audios}}
+  <p>Current audio:
+    <audio style="vertical-align: middle"
+           src="{{url}}"
+           type="audio/mp3"  controls>
+    </audio>
+    {{#if notSavedToMP3}}
+    <a id="saveAudio"
+       class="btn btn-primary" href="#">
+      <i class="fa fa-cloud-upload"></i>Save to Cloud
+    </a>
+    {{/if}}
+     <button type="button"
+            data-toggle="tooltip"
+            title="Click the X to delete this recording"
+            class="close" data-dismiss="alert">
+      <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+    </button>
+  </p>
+  {{/each}}
+</template>
+

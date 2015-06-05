@@ -8,7 +8,9 @@ Template.carouselZone.rendered = function(){
     accept: function(file,done) {
       var _self = this;
       var uuid = Session.get('UUID');
-
+      
+      Session.set('formChanged',true);
+      
       var metaContext = {fileName: file.name, uuid: uuid};
       var myImageUploader = new Slingshot.Upload("myImageUploads", metaContext);
       processImage(file, 800, 450, function(dataURI) {
