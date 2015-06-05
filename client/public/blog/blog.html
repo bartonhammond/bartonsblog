@@ -47,7 +47,20 @@
         <div class="row">
           <div class="col-md-12">
             <div class="post-content">
-             {{{description}}}
+              {{#each audios}}
+              <audio src="{{getSrc}}"
+                     type="audio/mp3"
+                     controls>
+                </audio>
+              {{/each}}
+            </div><!-- end col -->
+          </div><!-- end row -->
+        </div><!-- end post-content -->
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="post-content">
+              {{{description}}}
             </div><!-- end col -->
           </div><!-- end row -->
         </div><!-- end post-content -->

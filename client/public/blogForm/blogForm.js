@@ -41,3 +41,15 @@ Template.blogForm.helpers({
     return !!Session.get('blogSubmitErrors')[field] ? 'has-error' : '';
   }
 });
+Template.blogForm.events({
+  'input #title': function() {
+    Session.set('formChanged',true);
+  },
+  'input #lead': function() {
+    Session.set('formChanged',true);
+  },
+    'input #description': function() {
+    Session.set('formChanged',true);
+  }
+
+})

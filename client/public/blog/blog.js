@@ -9,6 +9,16 @@ Template.blog.helpers({
       return {value: value, index: index, active: index ==0 ? 'active':''};
     });
   },
+  audios: function() {
+    return this.audio;
+  },
+  getSrc: function() {
+    if (_.isEmpty(this.mp3URL)){
+      return this.blob.blobURL;
+    } else {
+      return this.mp3URL;
+    }
+  }
 });
 Template.blog.rendered = function() {
   $('#portfolio-carousel').carousel({
