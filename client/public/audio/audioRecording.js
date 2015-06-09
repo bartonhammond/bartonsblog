@@ -55,31 +55,6 @@ Template.audioRecording.events({
     audioRecorder && audioRecorder.stop();
     Session.set('formChanged',true);
   },
-  'click #saveAudio': function(e, tmpl) {
-    var _self = this;
-    var blob = new Blob([_self.blob.file],{type: _self.blob.type});
-
-    var metaContext = {_id: _self.id, uuid: _self.uuid};
-    var myAudioUploader = new Slingshot.Upload("myAudioUploads", metaContext);
-
-    var ezModal = EZModal({
-      size: 'sm',
-      classes: 'text-center',
-      body: 'Saving audio to cloud...this may take a few moments',
-      hideFooter: true
-    });
-
-    myAudioUploader.send(blob, function (error, downloadUrl) {
-      ezModal.modal('hide');
-      if (!error) {
-        Audios.update(
-          {_id: _self._id}, 
-          {$set:
-           { mp3URL: downloadUrl}
-          });
-      }//error
-    });
-  },
   'click .close': function (event, template) {
     var _self = this;
     if (_.isUndefined(Router.current().params._id)) {
@@ -103,9 +78,5 @@ Template.audioRecording.helpers({
     } else {
       return _self.mp3URL;
     }
-  },
-  notSavedToMP3: function() {
-    var _self = this;
-    return _.isUndefined(_self.mp3URL);
   }
 });
