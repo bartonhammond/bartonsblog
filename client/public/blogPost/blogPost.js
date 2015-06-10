@@ -37,6 +37,9 @@ insertBlog = function(e, tmpl,  ezModal) {
   var errors = validateBlog(blog);
   if (_.keys(errors).length > 0)  {
     ezModal.modal('hide');
+    _.each(_.values(errors), function(error) {
+      toastr.error(error);
+    });
     return Session.set('blogSubmitErrors', errors);
   }
   
