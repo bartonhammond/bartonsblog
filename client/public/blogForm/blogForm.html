@@ -22,14 +22,16 @@
       </div><!-- end controls-->
     </div><!-- end form-group -->
 
-    <div class="form-group">
+    <div class="form-group  {{errorClass 'lead'}}">
       <label class="control-label" for="lead">Lead</label>
       <div class="controls">
         <textarea data-toggle="tooltip" title="Provide some
                                                interesting lead in that describes what the blog is
                                                about."
                   value="{{lead}}"
-                  id="lead" rows="3" maxlength="500" class="form-control"></textarea>
+                  id="lead" rows="3"
+                  maxlength="500"
+                  class="form-control"></textarea>
       </div><!-- end controls-->
     </div><!-- end form-group -->
 

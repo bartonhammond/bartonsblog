@@ -36,8 +36,14 @@ saveBlog = function(e, tmpl, blogId, ezModal) {
   }//blog
   
   var errors = validateBlog(blog);
-  if (_.keys(errors).length > 0) 
-    return Session.set('postSubmitErrors', errors)
+  if (_.keys(errors).length > 0) {
+    ezModal.modal('hide');
+    _.each(_.values(errors), function(error) {
+      toastr.error(error);
+    });
+    return Session.set('blogSubmitErrors', errors);
+  }
+    
   
   Blogs.update(blogId,
                {$set: blog}, function(error) {
